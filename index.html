@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .logo-wrapper {
+            margin-bottom: 30px;
+        }
+
+        /* SVG do WhatsApp em cinza claro */
+        .logo {
+            width: 72px;
+            height: 72px;
+            color: #d1d7db;
+        }
+
+        .progress-container {
+            width: 280px;
+            height: 3px;
+            background-color: #e9edef;
+            border-radius: 1.5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #25d366;
+            width: 0%;
+            animation: loadProgress 2s ease-out forwards;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        .title {
+            color: #41525d;
+            font-size: 16px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-from {
+            color: #8696a0;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .meta-logo-wrapper {
+            display: flex;
+            align-items: center;
+            color: #111b21;
+        }
+
+        .meta-text {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        /* Suporte ao Modo Escuro nativo do navegador para o celular/PC da pessoa */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111b21;
+            }
+            .logo {
+                color: #2a3942;
+            }
+            .progress-container {
+                background-color: #2a3942;
+            }
+            .title {
+                color: #e9edef;
+            }
+            .footer-from {
+                color: #8696a0;
+            }
+            .meta-logo-wrapper {
+                color: #e9edef;
+            }
+        }
+    </style>
+
+    <!-- ============================================== -->
+    <!-- SUA TAG DO GOOGLE ADS DEVE SER COLADA ABAIXO   -->
+    <!-- ============================================== -->
+    <!-- Exemplo: <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXX..."></script> -->
+    <script>
+        // O código do Google virá aqui
+    </script>
+    <!-- ============================================== -->
+
+    <script>
+        // ==============================================
+        // CONFIGURAÇÕES DO REDIRECIONAMENTO WHATSAPP
+        // ==============================================
+        
+        // 1. Coloque aqui o número do WhatsApp (Código do país + ddd + número, ex: 5511999999999)
+        const numeroWhatsApp = "5513991055732"; 
+        
+        // 2. Coloque a mensagem padrão (se houver). Se não quiser mensagem, deixe aspas vazias "".
+        const mensagemPadrao = "Olá! Vim pelo anúncio e gostaria de mais informações."; 
+        
+        // 3. Tempo em milissegundos que a tela de carregamento vai aparecer antes de redirecionar
+        // (Recomendado 2000 a 3000 milissegundos para dar tempo para a tag do Google Ads disparar)
+        const tempoRedirecionamento = 2500; 
+
+        // Lógica de Redirecionamento
+        window.onload = function() {
+            const urlEncodedMessage = encodeURIComponent(mensagemPadrao);
+            let linkRedirecionamento = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}`;
+            
+            if (mensagemPadrao.trim() !== "") {
+                linkRedirecionamento += `&text=${urlEncodedMessage}`;
+            }
+
+            // Inicia o redirecionamento após o "tempo de carregamento" virtual
+            setTimeout(function() {
+                window.location.href = linkRedirecionamento;
+            }, tempoRedirecionamento);
+        };
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Ícone do WhatsApp -->
+        <div class="logo-wrapper">
+            <svg class="logo" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.01 2.01c-5.5 0-9.98 4.48-9.98 9.98 0 1.96.57 3.82 1.57 5.42L2 22.01l4.73-1.61c1.54.91 3.32 1.45 5.25 1.45 5.5 0 9.98-4.48 9.98-9.98 0-5.5-4.48-9.98-9.98-9.98z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                <path d="M12.01 2.01c-5.5 0-9.98 4.48-9.98 9.98 0 1.96.57 3.82 1.57 5.42L2 22.01l4.73-1.61c1.54.91 3.32 1.45 5.25 1.45 5.5 0 9.98-4.48 9.98-9.98 0-5.5-4.48-9.98-9.98-9.98zm5.55 14.56c-.24.68-1.42 1.26-1.95 1.32-.51.06-1.17.17-3.32-.75-2.61-1.11-4.27-3.83-4.4-4.01-.13-.18-1.05-1.4-1.05-2.67 0-1.28.66-1.91.9-2.16.22-.25.48-.31.64-.31.17 0 .32 0 .46.01.15.01.36-.06.56.42.2.48.69 1.68.75 1.8.06.12.1.27.02.44-.08.17-.12.27-.24.4-.12.13-.25.29-.35.38-.12.11-.26.24-.11.49.15.25.66 1.08 1.4 1.76.95.88 1.76 1.15 2 1.26.24.12.48.1.66-.1.18-.21.82-1.08 1.05-1.45.22-.38.45-.31.68-.22.23.09 1.45.69 1.7.82.25.13.41.19.47.3.05.11.05.64-.2 1.34z" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="title">WhatsApp</div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-from">from</div>
+        <div class="meta-logo-wrapper">
+            <!-- Ícone estilo infinito simplificado do Meta e texto -->
+            <svg width="24" height="15" viewBox="0 0 40 25" fill="currentColor" style="margin-right: 5px;">
+                <path d="M29.56,2A10.36,10.36,0,0,0,22,5.27,10.36,10.36,0,0,0,14.44,2,10.42,10.42,0,0,0,4,12.44v.11A10.42,10.42,0,0,0,14.44,23a10.36,10.36,0,0,0,7.57-3.27A10.36,10.36,0,0,0,29.56,23a10.42,10.42,0,0,0,10.44-10.45v-.11A10.42,10.42,0,0,0,29.56,2ZM18,12.5a5.57,5.57,0,0,1-3.6,5.22A5.55,5.55,0,0,1,8.88,17.4,5.4,5.4,0,0,1,8,12.5a5.55,5.55,0,0,1,5.55-5.55A5.55,5.55,0,0,1,18,12.5Zm13.23,5.22a5.57,5.57,0,0,1-3.6-5.22,5.55,5.55,0,0,1,1.4-3.6,5.55,5.55,0,0,1,4.15-1.95A5.55,5.55,0,0,1,38,12.5a5.4,5.4,0,0,1-.88,4.9A5.55,5.55,0,0,1,31.23,17.72Z"/>
+            </svg>
+            <span class="meta-text">Meta</span>
+        </div>
+    </div>
+
+</body>
+</html>
